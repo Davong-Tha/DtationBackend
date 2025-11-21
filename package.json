@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "node src/server.js"
+    "dev": "node src/server.js",
+    "test-register": "curl -X POST https://4879efe7-f401-4467-bc0a-a1d906ff25cf-00-2be07tjrdzul1.sisko.replit.dev:3000/auth/register -H 'Content-Type: application/json' -d   '{\"name\":\"testuser\",\"email\":\"test@example.com\",\"password\":\"mypassword\"}'",
+    "test-login": "curl -X POST https://4879efe7-f401-4467-bc0a-a1d906ff25cf-00-2be07tjrdzul1.sisko.replit.dev:3000/auth/login -H 'Content-Type: application/json' -d   '{\"email\":\"test@example.com\",\"password\":\"mypassword\"}'",
+    "ping": "curl -X GET https://4879efe7-f401-4467-bc0a-a1d906ff25cf-00-2be07tjrdzul1.sisko.replit.dev:3000/ping"
   },
   "keywords": [],
   "author": "",
