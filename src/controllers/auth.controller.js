@@ -1,15 +1,27 @@
 import { registerUser, loginUser } from "../services/auth.service.js";
 
+import { z } from "zod";
+
+const registerSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.email("Invalid email"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+const loginSchema = z.object({
+  email: z.email({ message: "Invalid email format" }),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
 
 export async function register(req, res) {
   try {
-    const { name, email, password } = req.body;
+    const result = registerSchema.safeParse(req.body);
 
-    if (!name || !email || !password) {
-      return res
-        .status(400)
-        .json({ error: "name, email and password are required" });
+    if (!result.success) {
+      return res.status(400).json({ message: result.error.issues[0].message });
     }
+
+    const { name, email, password } = result.data;
 
     const user = await registerUser({ name, email, password });
 
@@ -26,10 +38,13 @@ export async function register(req, res) {
 
 export async function login(req, res) {
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ error: "email and password are required" });
+    const result = loginSchema.safeParse(req.body);
+
+    if (!result.success) {
+      return res.status(400).json({ message: result.error.issues[0].message });
     }
+
+    const { email, password } = result.data;
 
     const user = await loginUser({ email, password });
 
