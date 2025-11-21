@@ -9,15 +9,17 @@
     "dev": "node src/server.js",
     "test-register": "curl -X POST https://4879efe7-f401-4467-bc0a-a1d906ff25cf-00-2be07tjrdzul1.sisko.replit.dev:3000/auth/register -H 'Content-Type: application/json' -d   '{\"name\":\"testuser\",\"email\":\"test@example.com\",\"password\":\"mypassword\"}'",
     "test-login": "curl -X POST https://4879efe7-f401-4467-bc0a-a1d906ff25cf-00-2be07tjrdzul1.sisko.replit.dev:3000/auth/login -H 'Content-Type: application/json' -d   '{\"email\":\"test@example.com\",\"password\":\"mypassword\"}'",
-    "ping": "curl -X GET https://4879efe7-f401-4467-bc0a-a1d906ff25cf-00-2be07tjrdzul1.sisko.replit.dev:3000/ping"
+    "ping": "curl -X GET https://4879efe7-f401-4467-bc0a-a1d906ff25cf-00-2be07tjrdzul1.sisko.replit.dev:3000/ping",
+    "me": "curl -X GET https://4879efe7-f401-4467-bc0a-a1d906ff25cf-00-2be07tjrdzul1.sisko.replit.dev:3000/user/me -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MWZjZTZjMDhmN2Q1ZDg5ZWU4MWM3ZiIsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsIm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTc2MzcxMDcwNCwiZXhwIjoxNzYzNzE0MzA0fQ.TC1NE0CLOvJqWSBfj9MHq9RIdglXHZDRFs2ky-b9iUU\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^8.0.0",
     "bcryptjs": "^2.4.3",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.0"
   }
 }

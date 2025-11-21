@@ -1,5 +1,12 @@
 import bcrypt from "bcryptjs";
 import User from "../models/user.models.js";
+import jwt from "jsonwebtoken";
+
+function generateToken(user) {
+  return jwt.sign({ id: user._id, email: user.email, name: user.name }, process.env.JWT_SECRET, {
+    expiresIn: "1h",
+  });
+}
 
 export async function registerUser({ name, email, password }) {
   const existing = await User.findOne({ email });
@@ -46,5 +53,6 @@ export async function loginUser({ email, password }) {
     id: user._id,
     name: user.name,
     email: user.email,
+    token: generateToken(user),
   };
 }
