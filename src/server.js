@@ -8,6 +8,8 @@ import "dotenv/config";
 import cors from "cors";
 
 const app = express();
+
+
 // CORS should be as early as possible
 // Log every request and its Origin header
 app.use((req, res, next) => {
@@ -26,6 +28,8 @@ app.use(
 
 // Handle preflight for all routes
 app.options("*", cors({ origin: true }));
+
+
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World");

@@ -14,4 +14,11 @@ export async function createProject({ name, owner_id }) {
     owner: project.owner,
     createdAt: project.createdAt,
   }
+
+
+}
+
+export async function getAllprojects({ owner_id }){
+  const projects = await Project.find({ owner_id })
+  return projects
 }
