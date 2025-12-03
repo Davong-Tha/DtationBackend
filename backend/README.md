@@ -1,0 +1,1 @@
+# Backend for full stack data annotation platform build as a personal portfolio
