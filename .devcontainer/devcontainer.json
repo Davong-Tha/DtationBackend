@@ -1,0 +1,11 @@
+{
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "Davong-Tha/DtationFrontend": {
+          "permissions": "write-all"
+        }
+      }
+    }
+  }
+}
